@@ -1,0 +1,346 @@
+2026-02-16 11:56:54,981 - INFO - Starting scrape from 5290 to 5295
+2026-02-16 11:56:54,981 - INFO - Output will be saved to: pure_release_notes.md
+2026-02-16 11:56:55,031 - INFO - Processing page 5290: https://helpcenter.pure.elsevier.com/5290
+2026-02-16 11:56:55,321 - ERROR - Fatal error during scraping: catching classes that do not inherit from BaseException is not allowed
+Traceback (most recent call last):
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/lockl001/.pyenv/versions/3.13.0/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1020)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/lockl001/projects/release-notes-scraper/scraper.py", line 90, in fetch_with_retry
+    response = client.get(url)
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1053, in get
+    return self.request(
+           ~~~~~~~~~~~~^
+        "GET",
+        ^^^^^^
+    ...<7 lines>...
+        extensions=extensions,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/lockl001/.pyenv/versions/3.13.0/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/lockl001/projects/release-notes-scraper/.venv/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1020)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/lockl001/projects/release-notes-scraper/scraper.py", line 417, in <module>
+    results = scrape_release_notes(
+        start_id=args.start,
+    ...<3 lines>...
+        stats=stats
+    )
+  File "/Users/lockl001/projects/release-notes-scraper/scraper.py", line 254, in scrape_release_notes
+    html = fetch_with_retry(client, url, config.max_retries)
+  File "/Users/lockl001/projects/release-notes-scraper/scraper.py", line 111, in fetch_with_retry
+    except httpx.Timeout:
+    ...<3 lines>...
+            continue
+TypeError: catching classes that do not inherit from BaseException is not allowed
+2026-02-16 11:57:02,288 - INFO - Starting scrape from 5290 to 5292
+2026-02-16 11:57:02,288 - INFO - Output will be saved to: pure_release_notes.md
+2026-02-16 11:57:02,327 - INFO - Processing page 5290: https://helpcenter.pure.elsevier.com/5290
+2026-02-16 11:57:02,989 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5290 "HTTP/2 200 OK"
+2026-02-16 11:57:03,176 - INFO - Found title: 5.29.0 - Pure
+2026-02-16 11:57:03,197 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5290
+2026-02-16 11:57:03,702 - INFO - Processing page 5291: https://helpcenter.pure.elsevier.com/5291
+2026-02-16 11:57:04,280 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5291 "HTTP/2 200 OK"
+2026-02-16 11:57:04,478 - INFO - Found title: 5.29.1 - Pure
+2026-02-16 11:57:04,486 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5291
+2026-02-16 11:57:04,991 - INFO - Processing page 5292: https://helpcenter.pure.elsevier.com/5292
+2026-02-16 11:57:05,413 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5292 "HTTP/2 200 OK"
+2026-02-16 11:57:05,627 - INFO - Found title: 5.29.2 - Pure
+2026-02-16 11:57:05,639 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5292
+2026-02-16 11:57:06,145 - INFO - Successfully saved to pure_release_notes.md
+2026-02-16 11:57:06,146 - INFO - Statistics: {'total_pages_checked': 3, 'successful_scrapes': 3, 'failed_scrapes': 0, 'not_found': 0, 'duration_seconds': 3.857325, 'success_rate': 1.0}
+2026-02-16 11:57:06,146 - INFO - Scraping completed. Success rate: 3/3
+2026-02-16 11:57:34,383 - INFO - Starting scrape from 5290 to 5295
+2026-02-16 11:57:34,383 - INFO - Output will be saved to: test_output.md
+2026-02-16 11:57:34,424 - INFO - Processing page 5290: https://helpcenter.pure.elsevier.com/5290
+2026-02-16 11:57:35,008 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5290 "HTTP/2 200 OK"
+2026-02-16 11:57:35,187 - INFO - Found title: 5.29.0 - Pure
+2026-02-16 11:57:35,204 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5290
+2026-02-16 11:57:35,708 - INFO - Processing page 5291: https://helpcenter.pure.elsevier.com/5291
+2026-02-16 11:57:35,919 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5291 "HTTP/2 200 OK"
+2026-02-16 11:57:36,028 - INFO - Found title: 5.29.1 - Pure
+2026-02-16 11:57:36,034 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5291
+2026-02-16 11:57:36,539 - INFO - Processing page 5292: https://helpcenter.pure.elsevier.com/5292
+2026-02-16 11:57:36,756 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5292 "HTTP/2 200 OK"
+2026-02-16 11:57:36,995 - INFO - Found title: 5.29.2 - Pure
+2026-02-16 11:57:37,006 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5292
+2026-02-16 11:57:37,506 - INFO - Processing page 5293: https://helpcenter.pure.elsevier.com/5293
+2026-02-16 11:57:37,869 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5293 "HTTP/2 200 OK"
+2026-02-16 11:57:38,097 - INFO - Found title: 5.29.3 - Pure
+2026-02-16 11:57:38,106 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5293
+2026-02-16 11:57:38,611 - INFO - Processing page 5294: https://helpcenter.pure.elsevier.com/5294
+2026-02-16 11:57:38,890 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5294 "HTTP/2 404 Not Found"
+2026-02-16 11:57:38,960 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5294
+2026-02-16 11:57:38,960 - INFO - Processing page 5295: https://helpcenter.pure.elsevier.com/5295
+2026-02-16 11:57:39,212 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5295 "HTTP/2 404 Not Found"
+2026-02-16 11:57:39,213 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5295
+2026-02-16 11:57:39,214 - INFO - Successfully saved to test_output.md
+2026-02-16 11:57:39,214 - INFO - Statistics: {'total_pages_checked': 6, 'successful_scrapes': 4, 'failed_scrapes': 0, 'not_found': 2, 'duration_seconds': 4.830556, 'success_rate': 0.6666666666666666}
+2026-02-16 11:57:39,214 - INFO - Scraping completed. Success rate: 4/6
+2026-02-16 12:05:56,734 - INFO - Starting scrape from 5290 to 5350
+2026-02-16 12:05:56,735 - INFO - Output will be saved to: pure_release_notes.md
+2026-02-16 12:05:56,791 - INFO - Processing page 5290: https://helpcenter.pure.elsevier.com/5290
+2026-02-16 12:05:57,383 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5290 "HTTP/2 200 OK"
+2026-02-16 12:05:57,576 - INFO - Found title: 5.29.0 - Pure
+2026-02-16 12:05:57,594 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5290
+2026-02-16 12:05:58,100 - INFO - Processing page 5291: https://helpcenter.pure.elsevier.com/5291
+2026-02-16 12:05:58,402 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5291 "HTTP/2 200 OK"
+2026-02-16 12:05:58,595 - INFO - Found title: 5.29.1 - Pure
+2026-02-16 12:05:58,603 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5291
+2026-02-16 12:05:59,108 - INFO - Processing page 5292: https://helpcenter.pure.elsevier.com/5292
+2026-02-16 12:05:59,355 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5292 "HTTP/2 200 OK"
+2026-02-16 12:05:59,522 - INFO - Found title: 5.29.2 - Pure
+2026-02-16 12:05:59,541 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5292
+2026-02-16 12:06:00,043 - INFO - Processing page 5293: https://helpcenter.pure.elsevier.com/5293
+2026-02-16 12:06:00,288 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5293 "HTTP/2 200 OK"
+2026-02-16 12:06:00,414 - INFO - Found title: 5.29.3 - Pure
+2026-02-16 12:06:00,429 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5293
+2026-02-16 12:06:00,934 - INFO - Processing page 5294: https://helpcenter.pure.elsevier.com/5294
+2026-02-16 12:06:01,337 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5294 "HTTP/2 404 Not Found"
+2026-02-16 12:06:01,377 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5294
+2026-02-16 12:06:01,378 - INFO - Processing page 5295: https://helpcenter.pure.elsevier.com/5295
+2026-02-16 12:06:01,619 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5295 "HTTP/2 404 Not Found"
+2026-02-16 12:06:01,681 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5295
+2026-02-16 12:06:01,682 - INFO - Processing page 5296: https://helpcenter.pure.elsevier.com/5296
+2026-02-16 12:06:01,947 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5296 "HTTP/2 404 Not Found"
+2026-02-16 12:06:01,948 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5296
+2026-02-16 12:06:01,948 - INFO - Processing page 5297: https://helpcenter.pure.elsevier.com/5297
+2026-02-16 12:06:02,209 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5297 "HTTP/2 404 Not Found"
+2026-02-16 12:06:02,243 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5297
+2026-02-16 12:06:02,243 - INFO - Processing page 5298: https://helpcenter.pure.elsevier.com/5298
+2026-02-16 12:06:02,573 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5298 "HTTP/2 404 Not Found"
+2026-02-16 12:06:02,608 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5298
+2026-02-16 12:06:02,608 - INFO - Processing page 5299: https://helpcenter.pure.elsevier.com/5299
+2026-02-16 12:06:02,908 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5299 "HTTP/2 404 Not Found"
+2026-02-16 12:06:02,909 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5299
+2026-02-16 12:06:02,910 - INFO - Processing page 5300: https://helpcenter.pure.elsevier.com/5300
+2026-02-16 12:06:03,329 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5300 "HTTP/2 200 OK"
+2026-02-16 12:06:03,539 - INFO - Found title: 5.30.0 - Pure
+2026-02-16 12:06:03,568 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5300
+2026-02-16 12:06:04,073 - INFO - Processing page 5301: https://helpcenter.pure.elsevier.com/5301
+2026-02-16 12:06:04,380 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5301 "HTTP/2 200 OK"
+2026-02-16 12:06:04,577 - INFO - Found title: 5.30.1 - Pure
+2026-02-16 12:06:04,592 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5301
+2026-02-16 12:06:05,095 - INFO - Processing page 5302: https://helpcenter.pure.elsevier.com/5302
+2026-02-16 12:06:05,534 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5302 "HTTP/2 200 OK"
+2026-02-16 12:06:05,623 - INFO - Found title: 5.30.2 - Pure
+2026-02-16 12:06:05,634 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5302
+2026-02-16 12:06:06,139 - INFO - Processing page 5303: https://helpcenter.pure.elsevier.com/5303
+2026-02-16 12:06:06,584 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5303 "HTTP/2 200 OK"
+2026-02-16 12:06:06,770 - INFO - Found title: 5.30.3 - Pure
+2026-02-16 12:06:06,785 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5303
+2026-02-16 12:06:07,290 - INFO - Processing page 5304: https://helpcenter.pure.elsevier.com/5304
+2026-02-16 12:06:07,627 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5304 "HTTP/2 404 Not Found"
+2026-02-16 12:06:07,662 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5304
+2026-02-16 12:06:07,662 - INFO - Processing page 5305: https://helpcenter.pure.elsevier.com/5305
+2026-02-16 12:06:07,933 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5305 "HTTP/2 404 Not Found"
+2026-02-16 12:06:07,998 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5305
+2026-02-16 12:06:07,999 - INFO - Processing page 5306: https://helpcenter.pure.elsevier.com/5306
+2026-02-16 12:06:08,250 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5306 "HTTP/2 404 Not Found"
+2026-02-16 12:06:08,285 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5306
+2026-02-16 12:06:08,285 - INFO - Processing page 5307: https://helpcenter.pure.elsevier.com/5307
+2026-02-16 12:06:08,527 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5307 "HTTP/2 404 Not Found"
+2026-02-16 12:06:08,528 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5307
+2026-02-16 12:06:08,529 - INFO - Processing page 5308: https://helpcenter.pure.elsevier.com/5308
+2026-02-16 12:06:08,775 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5308 "HTTP/2 404 Not Found"
+2026-02-16 12:06:08,776 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5308
+2026-02-16 12:06:08,777 - INFO - Processing page 5309: https://helpcenter.pure.elsevier.com/5309
+2026-02-16 12:06:09,033 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5309 "HTTP/2 404 Not Found"
+2026-02-16 12:06:09,034 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5309
+2026-02-16 12:06:09,034 - INFO - Processing page 5310: https://helpcenter.pure.elsevier.com/5310
+2026-02-16 12:06:09,362 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5310 "HTTP/2 200 OK"
+2026-02-16 12:06:09,532 - INFO - Found title: 5.31.0 - Pure
+2026-02-16 12:06:09,551 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5310
+2026-02-16 12:06:10,057 - INFO - Processing page 5311: https://helpcenter.pure.elsevier.com/5311
+2026-02-16 12:06:10,633 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5311 "HTTP/2 200 OK"
+2026-02-16 12:06:10,834 - INFO - Found title: 5.31.1 - Pure
+2026-02-16 12:06:10,847 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5311
+2026-02-16 12:06:11,352 - INFO - Processing page 5312: https://helpcenter.pure.elsevier.com/5312
+2026-02-16 12:06:11,727 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5312 "HTTP/2 200 OK"
+2026-02-16 12:06:11,888 - INFO - Found title: 5.31.2 - Pure
+2026-02-16 12:06:11,901 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5312
+2026-02-16 12:06:12,407 - INFO - Processing page 5313: https://helpcenter.pure.elsevier.com/5313
+2026-02-16 12:06:12,782 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5313 "HTTP/2 200 OK"
+2026-02-16 12:06:12,958 - INFO - Found title: 5.31.3 - Pure
+2026-02-16 12:06:12,973 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5313
+2026-02-16 12:06:13,474 - INFO - Processing page 5314: https://helpcenter.pure.elsevier.com/5314
+2026-02-16 12:06:13,696 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5314 "HTTP/2 404 Not Found"
+2026-02-16 12:06:13,731 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5314
+2026-02-16 12:06:13,732 - INFO - Processing page 5315: https://helpcenter.pure.elsevier.com/5315
+2026-02-16 12:06:13,971 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5315 "HTTP/2 404 Not Found"
+2026-02-16 12:06:13,973 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5315
+2026-02-16 12:06:13,973 - INFO - Processing page 5316: https://helpcenter.pure.elsevier.com/5316
+2026-02-16 12:06:14,254 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5316 "HTTP/2 404 Not Found"
+2026-02-16 12:06:14,286 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5316
+2026-02-16 12:06:14,287 - INFO - Processing page 5317: https://helpcenter.pure.elsevier.com/5317
+2026-02-16 12:06:14,529 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5317 "HTTP/2 404 Not Found"
+2026-02-16 12:06:14,531 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5317
+2026-02-16 12:06:14,531 - INFO - Processing page 5318: https://helpcenter.pure.elsevier.com/5318
+2026-02-16 12:06:14,791 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5318 "HTTP/2 404 Not Found"
+2026-02-16 12:06:14,792 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5318
+2026-02-16 12:06:14,792 - INFO - Processing page 5319: https://helpcenter.pure.elsevier.com/5319
+2026-02-16 12:06:15,058 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5319 "HTTP/2 404 Not Found"
+2026-02-16 12:06:15,059 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5319
+2026-02-16 12:06:15,059 - INFO - Processing page 5320: https://helpcenter.pure.elsevier.com/5320
+2026-02-16 12:06:15,326 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5320 "HTTP/2 404 Not Found"
+2026-02-16 12:06:15,327 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5320
+2026-02-16 12:06:15,327 - INFO - Processing page 5321: https://helpcenter.pure.elsevier.com/5321
+2026-02-16 12:06:15,653 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5321 "HTTP/2 404 Not Found"
+2026-02-16 12:06:15,654 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5321
+2026-02-16 12:06:15,654 - INFO - Processing page 5322: https://helpcenter.pure.elsevier.com/5322
+2026-02-16 12:06:16,067 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5322 "HTTP/2 200 OK"
+2026-02-16 12:06:16,217 - INFO - Found title: 5.32.2 - Pure
+2026-02-16 12:06:16,227 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5322
+2026-02-16 12:06:16,733 - INFO - Processing page 5323: https://helpcenter.pure.elsevier.com/5323
+2026-02-16 12:06:17,127 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5323 "HTTP/2 200 OK"
+2026-02-16 12:06:17,271 - INFO - Found title: 5.32.3 - Pure
+2026-02-16 12:06:17,288 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5323
+2026-02-16 12:06:17,793 - INFO - Processing page 5324: https://helpcenter.pure.elsevier.com/5324
+2026-02-16 12:06:18,216 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5324 "HTTP/2 404 Not Found"
+2026-02-16 12:06:18,296 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5324
+2026-02-16 12:06:18,296 - INFO - Processing page 5325: https://helpcenter.pure.elsevier.com/5325
+2026-02-16 12:06:18,523 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5325 "HTTP/2 404 Not Found"
+2026-02-16 12:06:18,524 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5325
+2026-02-16 12:06:18,524 - INFO - Processing page 5326: https://helpcenter.pure.elsevier.com/5326
+2026-02-16 12:06:18,811 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5326 "HTTP/2 404 Not Found"
+2026-02-16 12:06:18,813 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5326
+2026-02-16 12:06:18,814 - INFO - Processing page 5327: https://helpcenter.pure.elsevier.com/5327
+2026-02-16 12:06:19,161 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5327 "HTTP/2 404 Not Found"
+2026-02-16 12:06:19,162 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5327
+2026-02-16 12:06:19,162 - INFO - Processing page 5328: https://helpcenter.pure.elsevier.com/5328
+2026-02-16 12:06:19,393 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5328 "HTTP/2 404 Not Found"
+2026-02-16 12:06:19,394 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5328
+2026-02-16 12:06:19,394 - INFO - Processing page 5329: https://helpcenter.pure.elsevier.com/5329
+2026-02-16 12:06:19,687 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5329 "HTTP/2 404 Not Found"
+2026-02-16 12:06:19,689 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5329
+2026-02-16 12:06:19,689 - INFO - Processing page 5330: https://helpcenter.pure.elsevier.com/5330
+2026-02-16 12:06:20,211 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5330 "HTTP/2 200 OK"
+2026-02-16 12:06:20,349 - INFO - Found title: 5.33.0 - Pure
+2026-02-16 12:06:20,369 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5330
+2026-02-16 12:06:20,874 - INFO - Processing page 5331: https://helpcenter.pure.elsevier.com/5331
+2026-02-16 12:06:21,551 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5331 "HTTP/2 200 OK"
+2026-02-16 12:06:21,707 - INFO - Found title: 5.33.1 - Pure
+2026-02-16 12:06:21,720 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5331
+2026-02-16 12:06:22,226 - INFO - Processing page 5332: https://helpcenter.pure.elsevier.com/5332
+2026-02-16 12:06:22,678 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5332 "HTTP/2 200 OK"
+2026-02-16 12:06:22,901 - INFO - Found title: 5.33.2 - Pure
+2026-02-16 12:06:22,916 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5332
+2026-02-16 12:06:23,421 - INFO - Processing page 5333: https://helpcenter.pure.elsevier.com/5333
+2026-02-16 12:06:23,906 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5333 "HTTP/2 200 OK"
+2026-02-16 12:06:24,063 - INFO - Found title: 5.33.3 - Pure
+2026-02-16 12:06:24,079 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5333
+2026-02-16 12:06:24,584 - INFO - Processing page 5334: https://helpcenter.pure.elsevier.com/5334
+2026-02-16 12:06:24,835 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5334 "HTTP/2 404 Not Found"
+2026-02-16 12:06:24,930 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5334
+2026-02-16 12:06:24,930 - INFO - Processing page 5335: https://helpcenter.pure.elsevier.com/5335
+2026-02-16 12:06:25,166 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5335 "HTTP/2 404 Not Found"
+2026-02-16 12:06:25,167 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5335
+2026-02-16 12:06:25,167 - INFO - Processing page 5336: https://helpcenter.pure.elsevier.com/5336
+2026-02-16 12:06:25,456 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5336 "HTTP/2 404 Not Found"
+2026-02-16 12:06:25,457 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5336
+2026-02-16 12:06:25,458 - INFO - Processing page 5337: https://helpcenter.pure.elsevier.com/5337
+2026-02-16 12:06:25,854 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5337 "HTTP/2 404 Not Found"
+2026-02-16 12:06:25,856 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5337
+2026-02-16 12:06:25,856 - INFO - Processing page 5338: https://helpcenter.pure.elsevier.com/5338
+2026-02-16 12:06:26,125 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5338 "HTTP/2 404 Not Found"
+2026-02-16 12:06:26,126 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5338
+2026-02-16 12:06:26,127 - INFO - Processing page 5339: https://helpcenter.pure.elsevier.com/5339
+2026-02-16 12:06:26,360 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5339 "HTTP/2 404 Not Found"
+2026-02-16 12:06:26,362 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5339
+2026-02-16 12:06:26,362 - INFO - Processing page 5340: https://helpcenter.pure.elsevier.com/5340
+2026-02-16 12:06:26,882 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5340 "HTTP/2 200 OK"
+2026-02-16 12:06:27,051 - INFO - Found title: 5.34.0 - Pure
+2026-02-16 12:06:27,073 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5340
+2026-02-16 12:06:27,578 - INFO - Processing page 5341: https://helpcenter.pure.elsevier.com/5341
+2026-02-16 12:06:27,928 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5341 "HTTP/2 200 OK"
+2026-02-16 12:06:28,119 - INFO - Found title: 5.34.1 - Pure
+2026-02-16 12:06:28,126 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5341
+2026-02-16 12:06:28,631 - INFO - Processing page 5342: https://helpcenter.pure.elsevier.com/5342
+2026-02-16 12:06:29,124 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5342 "HTTP/2 200 OK"
+2026-02-16 12:06:29,258 - INFO - Found title: 5.34.2 - Pure
+2026-02-16 12:06:29,278 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5342
+2026-02-16 12:06:29,784 - INFO - Processing page 5343: https://helpcenter.pure.elsevier.com/5343
+2026-02-16 12:06:30,255 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5343 "HTTP/2 200 OK"
+2026-02-16 12:06:30,406 - INFO - Found title: 5.34.3 - Pure
+2026-02-16 12:06:30,423 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5343
+2026-02-16 12:06:30,928 - INFO - Processing page 5344: https://helpcenter.pure.elsevier.com/5344
+2026-02-16 12:06:31,223 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5344 "HTTP/2 404 Not Found"
+2026-02-16 12:06:31,259 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5344
+2026-02-16 12:06:31,259 - INFO - Processing page 5345: https://helpcenter.pure.elsevier.com/5345
+2026-02-16 12:06:31,514 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5345 "HTTP/2 404 Not Found"
+2026-02-16 12:06:31,549 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5345
+2026-02-16 12:06:31,550 - INFO - Processing page 5346: https://helpcenter.pure.elsevier.com/5346
+2026-02-16 12:06:31,835 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5346 "HTTP/2 404 Not Found"
+2026-02-16 12:06:31,871 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5346
+2026-02-16 12:06:31,871 - INFO - Processing page 5347: https://helpcenter.pure.elsevier.com/5347
+2026-02-16 12:06:32,115 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5347 "HTTP/2 404 Not Found"
+2026-02-16 12:06:32,267 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5347
+2026-02-16 12:06:32,268 - INFO - Processing page 5348: https://helpcenter.pure.elsevier.com/5348
+2026-02-16 12:06:32,580 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5348 "HTTP/2 404 Not Found"
+2026-02-16 12:06:32,616 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5348
+2026-02-16 12:06:32,616 - INFO - Processing page 5349: https://helpcenter.pure.elsevier.com/5349
+2026-02-16 12:06:32,860 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5349 "HTTP/2 404 Not Found"
+2026-02-16 12:06:32,861 - WARNING - Page not found or failed to fetch: https://helpcenter.pure.elsevier.com/5349
+2026-02-16 12:06:32,861 - INFO - Processing page 5350: https://helpcenter.pure.elsevier.com/5350
+2026-02-16 12:06:33,102 - INFO - HTTP Request: GET https://helpcenter.pure.elsevier.com/5350 "HTTP/2 200 OK"
+2026-02-16 12:06:33,196 - INFO - Found title: 5.35.0 - Pure
+2026-02-16 12:06:33,211 - INFO - Successfully scraped: https://helpcenter.pure.elsevier.com/5350
+2026-02-16 12:06:33,718 - INFO - Successfully saved to pure_release_notes.md
+2026-02-16 12:06:33,719 - INFO - Statistics: {'total_pages_checked': 61, 'successful_scrapes': 23, 'failed_scrapes': 0, 'not_found': 38, 'duration_seconds': 36.983559, 'success_rate': 0.3770491803278688}
+2026-02-16 12:06:33,719 - INFO - Scraping completed. Success rate: 23/61
