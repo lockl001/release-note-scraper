@@ -24,13 +24,18 @@ A robust tool for scraping and extracting release notes from Pure help center an
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/release-notes-scraper.git
+   git clone https://github.com/lockl001/release-note-scraper.git
    cd release-notes-scraper
    ```
 
-2. Install dependencies:
+2. Install dependencies using UV:
    ```bash
-   pip install beautifulsoup4 html2text httpx readability-lxml
+   uv pip install beautifulsoup4 html2text httpx readability-lxml
+   ```
+
+   Or install directly from the project:
+   ```bash
+   uv sync
    ```
 
 ## Usage
