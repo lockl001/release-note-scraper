@@ -5,12 +5,14 @@ A robust tool for scraping and extracting release notes from Pure help center an
 ## Features
 
 ### Core Functionality
+
 - Scrape release notes from Pure help center pages
 - Extract structured release note information
 - Save release notes in clean markdown format
 - Automatic content validation and quality checking
 
 ### Improved Features
+
 - **Robust Error Handling**: Automatic retries with exponential backoff for failed requests
 - **Comprehensive Logging**: Detailed logs to both console and file
 - **Statistics Tracking**: Detailed scraping statistics with success rates
@@ -23,17 +25,20 @@ A robust tool for scraping and extracting release notes from Pure help center an
 ## Installation
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/lockl001/release-note-scraper.git
    cd release-notes-scraper
    ```
 
 2. Install dependencies using UV:
+
    ```bash
    uv pip install beautifulsoup4 html2text httpx readability-lxml
    ```
 
    Or install directly from the project:
+
    ```bash
    uv sync
    ```
@@ -41,11 +46,13 @@ A robust tool for scraping and extracting release notes from Pure help center an
 ## Usage
 
 ### Basic Usage
+
 ```bash
 python scraper.py --start 5290 --end 5300
 ```
 
 ### Advanced Options
+
 ```bash
 # Scrape specific range with custom output
 python scraper.py --start 5200 --end 5250 --output my_notes.md
@@ -94,6 +101,7 @@ The scraper generates several files:
 ## Output Format
 
 The markdown output includes:
+
 - Main header with generation timestamp
 - Source URL for each release note
 - Scraping timestamp
@@ -103,6 +111,7 @@ The markdown output includes:
 ## Error Handling
 
 The scraper handles various error conditions:
+
 - **Network errors**: Automatic retries with exponential backoff
 - **Timeouts**: Configurable timeout handling
 - **Invalid content**: Content validation to filter out error pages
@@ -138,15 +147,18 @@ python scraper.py --start 5290 --end 5350 --delay 1.0
 ### Common Issues
 
 **SSL Certificate Errors**:
+
 - If you encounter SSL errors, you may need to update your CA certificates
 - For testing, you can modify the code to use `verify=False` (not recommended for production)
 
 **No Pages Found**:
+
 - Verify the page ID range is correct
 - Check if the target website structure has changed
 - Review the logs for detailed error information
 
 **Slow Performance**:
+
 - Reduce the `--delay` parameter (but be polite)
 - Increase `--timeout` for slow networks
 - Use `--retries 1` to minimize retry overhead
